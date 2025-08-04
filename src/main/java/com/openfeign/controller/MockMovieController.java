@@ -1,19 +1,21 @@
 package com.openfeign.controller;
 
 import com.openfeign.entity.Movie;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/mock/movies")
+@Slf4j
 public class MockMovieController {
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getMovieById(@PathVariable String id) throws InterruptedException {
+    public ResponseEntity<?> getMovieById(@PathVariable String id,@RequestHeader Map<String, String> headers) throws InterruptedException {
+        log.debug("headers - {} ",headers);
         Movie movie = null;
         switch (id) {
             case "1" -> {

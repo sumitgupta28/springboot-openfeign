@@ -5,12 +5,12 @@ import org.springframework.http.HttpStatus;
 
 
 @Getter
-public class MovieNotFoundException extends RuntimeException {
+public class MovieBadRequestException extends RuntimeException {
 
     final HttpStatus errorCode;
     final String errorMessage;
 
-    public MovieNotFoundException(HttpStatus errorCode, String errorMessage) {
+    public MovieBadRequestException(HttpStatus errorCode, String errorMessage) {
         super(errorMessage);
         this.errorCode = errorCode;
         this.errorMessage = errorMessage;
