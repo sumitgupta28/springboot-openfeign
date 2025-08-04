@@ -1,0 +1,23 @@
+logging:
+  level:
+    org.springframework.boot: ERROR
+
+management:
+  endpoint:
+    health:
+      show-details: ALWAYS
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+
+spring:
+  http:
+    codecs:
+      log-request-details: true
+
+
+
+
