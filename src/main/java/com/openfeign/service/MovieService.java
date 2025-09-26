@@ -4,6 +4,7 @@ import com.openfeign.client.MovieApiFeignClient;
 import com.openfeign.entity.Movie;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
@@ -28,7 +29,7 @@ public class MovieService {
     }
 
     private Movie fetchMovieDetails(String movieId) {
-        Movie movie = null;
+        ResponseEntity<Movie> movie = null;
         try {
             movie = movieApiClient.getMovieDetails(movieId);
         } catch (HttpServerErrorException httpServerErrorException) {
@@ -44,7 +45,7 @@ public class MovieService {
             log.error("Unexpected error encountered while fetching the movie details");
             throw exception;
         }
-        return movie;
+        return movie.getBody();
     }
 
 

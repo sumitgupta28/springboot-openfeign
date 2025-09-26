@@ -11,7 +11,8 @@ management:
       exposure:
         include: "*"
 
-
+movie-mock-service:
+    endpoint: http://localhost:8080
 
 spring:
   http:
